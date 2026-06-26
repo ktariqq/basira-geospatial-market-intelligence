@@ -1,7 +1,6 @@
 
 <div align="center">
-
-# بصيرة | Basira
+![Left](assets/left-flourish.png) # بصيرة | Basira ![Right](assets/right-flourish.png)
 **ذكاء السوق الجغرافي للمجتمعات الريفية**  
 Geospatial Market Intelligence for Rural Entrepreneurs
 
