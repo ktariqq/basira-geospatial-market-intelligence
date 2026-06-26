@@ -1,6 +1,19 @@
-
 <div align="center">
-![Left](assets/left-flourish.png) # بصيرة | Basira ![Right](assets/right-flourish.png)
+
+<table align="center" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="center">
+      <img src="assets/left-flourish.png" width="160">
+    </td>
+    <td align="center">
+      <h1>بصيرة | Basira</h1>
+    </td>
+    <td align="center">
+      <img src="assets/right-flourish.png" width="160">
+    </td>
+  </tr>
+</table>
+  
 **ذكاء السوق الجغرافي للمجتمعات الريفية**  
 Geospatial Market Intelligence for Rural Entrepreneurs
 
@@ -15,9 +28,6 @@ Geospatial Market Intelligence for Rural Entrepreneurs
 ![OpenStreetMap](https://img.shields.io/badge/OpenStreetMap-ODbL-7c3aed?style=flat-square&labelColor=1a0a2e&logo=openstreetmap&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.111-7c3aed?style=flat-square&labelColor=1a0a2e&logo=fastapi&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3.10+-7c3aed?style=flat-square&labelColor=1a0a2e&logo=python&logoColor=white)
-
-
-<br/>
 
 ━━━━━━━━━━━━━━ ✦ ✧ ✦ ━━━━━━━━━━━━━━
 </div>
