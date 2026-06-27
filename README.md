@@ -409,7 +409,11 @@ User Input (Voice OR Text — Arabic OR English, auto-detected)
 | OSM POI count within bounding box | *extracted from osm_alquaa.geojson* | OpenStreetMap |
 | Road accessibility score | *slope-weighted cost-distance via scipy* | NASADEM + OSM |
 
-> 💡 *Placeholder visual: 2×2 grid of static output maps — NDVI classification, terrain hillshade, VIIRS nighttime lights, demand heatmap sample. Each image ~300×300px. Caption each with the dataset name and acquisition date. Embed as `assets/results_grid.png`.*
+<p align="center">
+  <img src="assets/results_grid.png" width="700">
+  <br>
+  <em>Figure 3. Representative outputs including NDVI classification, terrain hillshade, VIIRS nighttime lights, and demand heatmap.</em>
+</p>
 
 **Demand scores by subcategory** (0–100 · higher = stronger opportunity signal):
 
@@ -428,7 +432,11 @@ User Input (Voice OR Text — Arabic OR English, auto-detected)
 
 > **On Tourism:** Al Qua'a is globally recognised as one of the darkest inhabited locations on Earth. The VIIRS Black Marble night radiance data for this bounding box directly captures this — low radiance means high tourism suitability in Basira's model. The system is not applying a generic framework. It is reading Al Qua'a's actual geography from orbit.
 
-> 💡 *Placeholder visual: horizontal bar chart of all 10 demand scores once computed — dark purple background, violet-to-shocking-pink bar gradient by score. Export as `assets/demand_scores_chart.png`. Embed inline, width ~680px.*
+<p align="center">
+  <img src="assets/demand_scores_chart.png" width="680">
+  <br>
+  <em>Figure 4. Demand scores computed for the evaluated opportunity categories.</em>
+</p>
 
 <br/>
 
