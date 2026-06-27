@@ -115,7 +115,6 @@ This is not a partial match to the challenge. It is the challenge, solved at the
 ---
 
 ### ❸ &nbsp; Feasibility of Implementation
-
 > *"Clearly deployable in a rural setting, with cost, resources, and maintenance thought through."*
 
 ---
@@ -124,13 +123,15 @@ This is not a partial match to the challenge. It is the challenge, solved at the
 
 <br/>
 
-**Deployment model: one device per community**
+**Deployment model: any device, any person**
 
 ```
-One laptop or Raspberry Pi 4 at a community centre or mosque
-└── Runs Basira server locally (no cloud, no subscription, no maintenance contract)
-    └── Any resident connects via phone on local WiFi — no app download required
-        └── Hardware kiosk (ESP32 + OLED + button panel) for zero-literacy access
+One-time setup (internet required):
+└── pip install -r requirements.txt
+└── Download two models (~500MB total, runs automatically on first launch)
+    └── python scripts/basira.py
+        └── Browser opens — system is fully operational
+            └── All subsequent runs require zero internet connection
 ```
 
 <br/>
@@ -139,21 +140,34 @@ One laptop or Raspberry Pi 4 at a community centre or mosque
 
 | Component | Cost |
 |-----------|------|
-| Raspberry Pi 4 (4GB) | ~AED 280 |
-| ESP32 kiosk unit | ~AED 50 |
-| Solar panel + battery pack | ~AED 150 |
-| **Total hardware** | **~AED 480** |
+| Any laptop or desktop (already owned) | AED 0 |
 | Satellite data | AED 0 — all open access |
-| Software | AED 0 — fully open source |
-| Internet at runtime | AED 0 — fully offline |
+| Software and models | AED 0 — fully open source |
+| Internet at runtime | AED 0 — fully offline after setup |
+| **Total cost to deploy** | **AED 0** |
 
-**No recurring costs. No API subscriptions. No connectivity dependency.**
+**No hardware purchases. No recurring costs. No API subscriptions. No connectivity dependency after the first run.**
 
-**Maintenance:** Satellite data refreshes quarterly via a single download script. OSM updates via one Overpass Turbo re-export. No technical staff required on-site.
+<br/>
 
-**Offline-first is not a feature — it is the foundation.** Rural UAE connectivity is the problem context. Basira requires zero internet after a one-time model download.
+**What the one-time setup downloads:**
 
-→ *See [How to Run](#-how-to-run) and [Hardware](#hardware--esp32-kiosk) for setup details.*
+| Item | Size | Source |
+|------|------|--------|
+| `paraphrase-multilingual-MiniLM-L12-v2` | ~120MB | Hugging Face |
+| `faster-whisper small` (int8) | ~240MB | Hugging Face |
+| Python dependencies | ~150MB | PyPI |
+| **Total** | **~510MB** | downloaded once, cached permanently |
+
+After this, the device never needs to reach the internet again. The satellite data, OSM vector files, demand scores, and licence pathways are all committed to the repository and load from disk.
+
+<br/>
+
+**Maintenance:** Satellite data refreshes quarterly via a single script. OSM updates via one Overpass Turbo re-export and a file replacement. No technical staff required on-site. No server to manage. No subscription to renew.
+
+**Offline-first is not a feature — it is the foundation.** Rural UAE connectivity is the problem context. Basira requires zero internet after that one-time model download.
+
+→ *See [How to Run](#-how-to-run) for the full setup sequence.*
 
 <br/>
 
@@ -179,7 +193,6 @@ One laptop or Raspberry Pi 4 at a community centre or mosque
 | Explainability layer (Arabic explanation from signal values) | ✅ Running |
 | UAE licence JSON (all 10 subcategories) | ✅ Running |
 | FastAPI backend + Arabic-first frontend | ✅ Running |
-| ESP32 kiosk (button panel + OLED display) | ✅ Running |
 | Pre-computed demand scores committed to repo | ✅ Committed |
 
 **One-line demo:**
@@ -233,9 +246,9 @@ Phase 1 — Al Qua'a        (Tatweer Hackathon 2026)
     ↓  one config file
 Phase 2 — Al Ain region   (Liwa · Madinat Zayed · Ghayathi · Al Mirfa)
     ↓  same config structure
-Phase 3 — UAE-wide        (every rural community with satellite coverage)
+Phase 3 — UAE-wide        (every rural community)
     ↓  same architecture
-Phase 4 — Global          (any rural community — which is all of them)
+Phase 4 — Global          (any rural community)
 ```
 
 Satellite coverage is global. The demand engine is geography-agnostic. The licence engine is the only country-specific component — and it is a JSON file.
@@ -303,7 +316,6 @@ python scripts/compute_demand.py --community alquaa
 | How classification works | [Classification System](#-classification-system) + `classifier.py` |
 | Data sources and licences | [Data Sources](#-data-sources) + `data/alquaa/README.md` |
 | How to deploy to a new community | [Scalability](#-scalability) + `config/` |
-| Hardware specification | [Hardware](#hardware--esp32-kiosk) + `hardware/esp32_kiosk.ino` |
 | Signal validation | `notebooks/validation.ipynb` |
 
 <br/>
@@ -620,11 +632,6 @@ The map is a **decision interface**, not a visualisation layer. Its primary ques
   <em>Figure 5. Interactive Folium map displaying opportunity zones, NDVI, points of interest, road network, and Arabic analysis interface.</em>
 </p>
 
-<p align="center">
-  <img src="assets/tooltip_arabic.jpg" width="320">
-  <br>
-  <em>Figure 6. Arabic tooltip showing the opportunity score and contributing demand indicators for a selected zone.</em>
-</p>
 
 <br/>
 
