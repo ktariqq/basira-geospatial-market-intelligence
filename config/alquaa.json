@@ -1,0 +1,17 @@
+{
+  "community_id": "alquaa",
+  "community_name_ar": "القعا",
+  "community_name_en": "Al Qua'a",
+  "region_ar": "منطقة العين",
+  "region_en": "Al Ain Region",
+  "center": [23.299, 55.1295],
+  "bbox": [23.049, 54.775, 23.549, 55.484],
+  "zoom_start": 11,
+  "sentinel2_b04": "data/alquaa/sentinel2_B04_alquaa_clipped.tif",
+  "sentinel2_b08": "data/alquaa/sentinel2_B08_alquaa_clipped.tif",
+  "dem_tile": "data/alquaa/dem_alquaa_clipped.tif",
+  "viirs_tile": "data/alquaa/viirs_alquaa_clipped.tif",
+  "osm_geojson": "data/alquaa/osm_alquaa.geojson",
+  "license_authority": "ADDED",
+  "demand_scores": "outputs/demand_scores_alquaa.json"
+}
