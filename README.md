@@ -1,4 +1,7 @@
 <div align="center">
+<p align="center" style="margin:0;">
+  <img src="assets/header.jpg" alt="Basira Header" width="100%">
+</p>
   
 # بصيرة | Basira
 **ذكاء السوق الجغرافي للمجتمعات الريفية**   |  Geospatial Market Intelligence for Rural Entrepreneurs
