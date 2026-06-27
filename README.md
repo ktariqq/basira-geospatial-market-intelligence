@@ -1,6 +1,6 @@
 <div align="center">
 <p align="center" style="margin:0;">
-  <img src="assets/header.jpg" alt="Basira Header" width="100%">
+  <img src="assets/header.png" alt="Basira Header" width="100%">
 </p>
   
 # بصيرة | Basira
