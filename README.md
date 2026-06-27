@@ -513,8 +513,8 @@ running any code. Every weight has a written rationale. Nothing is hidden.
 
 | File | Source | Dataset | Resolution | Acquired | Licence |
 |------|--------|---------|------------|----------|---------|
-| `sentinel2_B04_alquaa.tif` | Copernicus Data Space | Sentinel-2 L2A Band 4 | 10m | Jan–Mar 2026 | Copernicus Open Access |
-| `sentinel2_B08_alquaa.tif` | Copernicus Data Space | Sentinel-2 L2A Band 8 | 10m | Jan–Mar 2026 | Copernicus Open Access |
+| `sentinel2_B04_alquaa.tif` | Copernicus Data Space | Sentinel-2 L2A Band 4 | 10m | Jan–Mar 2025 | Copernicus Open Access |
+| `sentinel2_B08_alquaa.tif` | Copernicus Data Space | Sentinel-2 L2A Band 8 | 10m | Jan–Mar 2025 | Copernicus Open Access |
 | `dem_alquaa.tif` | OpenTopography / NASA | NASADEM Global DEM | 30m | 2000, processed 2020 | NASA Open Data |
 | `viirs_alquaa.tif` | NASA EarthData | VIIRS Black Marble VNP46A4 | 500m | 2025 annual composite | NASA Open Data |
 | `osm_alquaa.geojson` | Overpass Turbo | OSM admin + POIs + roads | Vector | June 2026 | ODbL |
@@ -663,7 +663,7 @@ Documents:   Emirates ID · Tourism business plan · Guide qualification · Safe
 
 ### Prerequisites
 - Python 3.10+
-- ~2GB disk space for models
+- ~500MB disk space for models
 - Data files in `data/alquaa/` (see [`data/alquaa/README.md`](data/alquaa/README.md))
 
 ### 1 — Install
@@ -702,16 +702,16 @@ python scripts/compute_demand.py --community alquaa
 
 ```bash
 # Web UI
-python scripts/basira.py
+python basira.py
 
 # Text input — CLI
-python scripts/basira.py --text "أريد تربية الإبل وبيع الحليب"
+python basira.py --text "أريد تربية الإبل وبيع الحليب"
 
 # Voice input
-python scripts/basira.py --voice
+python basira.py --voice
 
 # Different community
-python scripts/basira.py --community liwa
+python basira.py --community liwa
 ```
 
 Open **`http://localhost:8000`**
@@ -719,7 +719,7 @@ Open **`http://localhost:8000`**
 ### One-line demo
 
 ```bash
-python scripts/basira.py --text "I want to guide tourists in the desert"
+python basira.py --text "I want to guide tourists in the desert"
 # Subcategory 3.3 · Tourism & Environment · DCT licence · opportunity map · < 8 seconds
 ```
 
@@ -763,7 +763,7 @@ Tatweer 2026   →   Al Ain region   →   UAE-wide   →   Global
                     Al Mirfa                           coverage
 ```
 
-Satellite coverage is global. Basira is not a UAE product — it is a platform that starts in Al Qua'a.
+Satellite coverage is global. Basira is not a local-limited product — it is a platform that starts in Al Qua'a.
 
 <br/>
 
@@ -773,38 +773,12 @@ Satellite coverage is global. Basira is not a UAE product — it is a platform t
 
 <br/>
 
-## Hardware — ESP32 Kiosk
-
-One physical device per community. No smartphone required. Zero digital literacy assumed.
-
-**Bill of materials (~AED 480 total):**
-
-| Component | Purpose | Cost |
-|-----------|---------|------|
-| ESP32 + OLED display | Core unit + Arabic display | ~AED 60 |
-| 8-button panel (Arabic-labelled) | Category selection without text input | ~AED 30 |
-| Raspberry Pi 4 | Local server | ~AED 280 |
-| Solar panel + LiPo battery | Off-grid power | ~AED 150 |
-
-**Resident interaction:** Walk to the community kiosk. Press a category button in Arabic. Demand score and top opportunity zone display on OLED. Full map accessible on any phone connected to local WiFi. No account. No download. No literacy required.
-
-> 💡 *Placeholder visual: labelled diagram of the ESP32 kiosk unit — front panel showing Arabic button labels and OLED display. Clean dark background, purple accent lines. Export as `assets/hardware_diagram.png`, embed at ~500px width.*
-
-<br/>
-
-<div align="center"> 
-━━━━━━━━━━━━━━ ✦ ✧ ✦ ━━━━━━━━━━━━━━
-</div>
-
-<br/>
 
 ## 🟣 Repository Structure
 
 ```
 basira/
 ├── scripts/
-│   ├── basira.py           # CLI entry point — text, voice, or web UI
-│   ├── app.py              # FastAPI backend
 │   ├── classifier.py       # MiniLM cosine similarity classifier
 │   ├── demand_engine.py    # Satellite signal computation + scoring
 │   ├── explainability.py   # Arabic + English explanation generator
@@ -812,17 +786,17 @@ basira/
 │   ├── map_engine.py       # Folium 5-layer map generator
 │   ├── voice_input.py      # faster-whisper + mic recording
 │   ├── compute_demand.py   # Standalone pre-computation script
-│   └── i18n.py             # All UI strings AR + EN
+│   └── b_i18n.py           # All UI strings AR + EN
 │
 ├── config/
 │   ├── alquaa.json         # Al Qua'a community config
-│   ├── liwa.json           # Liwa — scalability demo
+│   ├── liwa.json           # Liwa — scalability demo (to be implemented)
 │   ├── weights.json        # Demand weights, all rationale-commented
 │   └── licenses.json       # UAE licence pathways, all 10 subcategories
 │
 ├── data/
 │   └── alquaa/
-│       ├── README.md       # Acquisition steps, dates, checksums
+│       ├── README.md       # Acquisition steps, dates, checksums, Google Drive link
 │       ├── sentinel2_B04_alquaa.tif
 │       ├── sentinel2_B08_alquaa.tif
 │       ├── dem_alquaa.tif
@@ -838,17 +812,17 @@ basira/
 ├── notebooks/
 │   └── validation.ipynb    # Signal validation + falsifiability benchmarks
 │
-├── hardware/
-│   └── esp32_kiosk.ino     # ESP32 kiosk firmware
-│
 ├── static/
 │   └── index.html          # Arabic-first frontend — dark purple, RTL, voice
 │
 ├── assets/                 # Visuals for README
+├── basira.py               # CLI entry point — text, voice, or web UI
+├── app.py                  # FastAPI backend
 ├── README.md
 ├── SETUP.md
 ├── requirements.txt
 └── data_download.sh
+
 ```
 
 <br/>
